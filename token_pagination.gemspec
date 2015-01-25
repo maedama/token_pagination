@@ -1,23 +1,29 @@
-# coding: utf-8
-lib = File.expand_path('../lib', __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'token_pagination/version'
+$:.push File.expand_path("../lib", __FILE__)
 
-Gem::Specification.new do |spec|
-  spec.name          = "token_pagination"
-  spec.version       = TokenPagination::VERSION
-  spec.authors       = ["maedama"]
-  spec.email         = ["maedama85@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ""
-  spec.license       = "MIT"
+# Maintain your gem's version:
+require "token_pagination/version"
 
-  spec.files         = `git ls-files -z`.split("\x0")
-  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
-  spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
-  spec.require_paths = ["lib"]
+# Describe your gem and declare its dependencies:
+Gem::Specification.new do |s|
+  s.name        = "token_pagination"
+  s.version     = TokenPagination::VERSION
+  s.authors     = ["maedama"]
+  s.email       = ["maedama85@gmail.com"]
+  s.homepage    = "http://maedama.hatenablog.com"
+  s.description = "Provides page token based pagination for your active record"
+  s.summary     = s.description
 
-  spec.add_development_dependency "bundler", "~> 1.7"
-  spec.add_development_dependency "rake", "~> 10.0"
+  s.license     = "MIT"
+
+  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
+
+  s.add_dependency "rails", "~> 4.1"
+  s.add_dependency "jwt", "~> 1.2.1"
+
+  s.add_development_dependency "bundler", "~> 1.7"
+  s.add_development_dependency "rake", "~> 10.0"
+  s.add_development_dependency "sqlite3", "~> 1.3.10"
+  s.add_development_dependency "rspec"
+  s.add_development_dependency "rspec-rails"
+
 end
