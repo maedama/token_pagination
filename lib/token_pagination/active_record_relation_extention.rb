@@ -89,7 +89,7 @@ module TokenPagination
             end
           else 
             if value.nil? then
-              return attr.eq(value)
+              return attr.eq(nil)
             else
               return attr.lteq(value)
             end
@@ -99,7 +99,7 @@ module TokenPagination
         def _next(order, attr, value)
           if order.ascending? then
             if value.nil? then
-              return attr.not_eq(value)
+              return attr.not_eq(nil)
             else
               return attr.gt(value)
             end
