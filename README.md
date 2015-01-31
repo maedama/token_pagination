@@ -131,7 +131,7 @@ Getting pages are very easily implemtend,  Following is an example(asuming user 
 
 # Get next page
 next_page_token = @posts.next_page_token # this would be a of jwt
-@posts = @user.posts.where(published: true).page_by_token(10, next_page_token)
+@posts = @user.posts.where(published: true).order(:id => :desc).page_by_token(10, next_page_token)
 # SELECT * FROM posts WHERE published=1 AND user_id = ? AND id < ? LIMIT 10
 
 next_page_token = @posts.next_page_token # nil
